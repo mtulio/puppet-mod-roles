@@ -1,0 +1,38 @@
+{
+  "name": "mtulio-roles",
+  "version": "1.0.0",
+  "author": "mtulio",
+  "summary": "Module to manage the puppet 'business layer'.",
+  "license": "Apache-2.0",
+  "source": "https://github.com/mtulio/puppet-mod-roles",
+  "project_page": "https://github.com/mtulio/puppet-mod-roles",
+  "issues_url": "https://github.com/mtulio/puppet-mod-roles/issues",
+  "tags": ["roles","profiles","business","layer","configuration","servers","linux","pool"],
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">= 3.0.0 < 5.0.0"
+    }
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "6",
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [
+        "6",
+        "7"
+      ]
+    }
+  ],
+  "description": "Module to manage the puppet 'business layer' called 'roles'.",
+  "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"},
+    {"name":"mtulio-profiles","version_requirement":">= 1.0.0"}
+  ]
+}
