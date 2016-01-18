@@ -1,7 +1,7 @@
 #
-# == Class: PROFILES
+# == Class: ROLES
 #
-# Manage 'abstraction layer' class of puppet
+# Manage 'business layer' class of puppet
 #
 # === Examples
 #
@@ -15,7 +15,7 @@
 #
 # Copyright 2016 Marco Tulio R Braga.
 #
-class profiles (
+class roles (
   $gb_pool      = undef,
   $gb_repo_base = undef,
 ) { }

@@ -1,4 +1,4 @@
-# Linux
+# roles
 
 #### Table of Contents
 
@@ -11,7 +11,16 @@
 
 ## Overview
 
-Module to manage the puppet 'abstraction layer'. Here you can define profiles for your roles. This class will work better with 'roles' class [business layer]. You can add one or more profile for each 'role'.
+Module to manage the puppet 'business layer'. Here you can define pools of configuration and associate it to profiles. This class will work exclusively with 'mtulio-profile' module that implements puppet 'implementation layer'. Each 'role' you can add one or more profiles.
+
+For an better understanding, I have named each 'roles' as a 'pools of servers', each pool has an specific group of configurations[profiles]
+
+For a example, if the node has an 'webserver role' with NGINX, the class can be called 'pool_dmz_nginx' and associate these profiles:
+* profiles::linux
+* profiles::nms::zabbix_agent
+* profiles::web::nginx
+
+In this class you can be specific and detailed in what the business need.
 
 ## Profiles
 
