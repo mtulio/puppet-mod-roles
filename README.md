@@ -2,14 +2,15 @@
 
 #### Table of Contents
 
-1. [Overview](#overview)
-2. [Profiles](#profiles)
-	* [Linux](#linux)
-	* [NMS - Network Management Systems](#nms)
-3. [Limitations](#limitations)
-4. [Development](#development)
+1. [Overview](#1-overview)
+2. [Roles](#roles)
+	* [server_linux](#21-class-server_linux)
+	* [pool_dmz_nginx](#22-class-pool_dmz_nginx)
+3. [Limitations](#3-limitations)
+4. [Development](#4-development)
+5. [Release Notes](#5-release-notes)
 
-## Overview
+## 1. Overview
 
 Module to manage the puppet 'business layer'. Here you can define pools of configuration and associate it to profiles. This class will work exclusively with 'mtulio-profile' module that implements puppet 'implementation layer'. Each 'role' you can add one or more profiles.
 
@@ -22,23 +23,21 @@ For a example, if the node has an 'webserver role' with NGINX, the class can be 
 
 In this class you can be specific and detailed in what the business need.
 
-## Profiles
+## 2. Roles
 
-* Linux
-* NMS/Zabbix
-* Webserver/Nginx [soon]
-* Webserver/APACHE [soon]
+* server_linux   : means a basic Linux server with the base Company configuration
+* pool_dmz_nginx : means a pools of Linux servers that has a base Linux Configuration plus NGINX
 
 
-### Linux
+### 2.1 Class: server_linux
 
 #### Description
 
- Profile Linux configure Linux system using module 'mtulio-linux'
+ Profile to configure Linux system using its profile [see module mtulio-profiles](https://forge.puppetlabs.com/mtulio/profiles)
 
 #### Dependencies
 
- Module ['Linux'](https://forge.puppetlabs.com/mtulio/linux)
+ Module ['mtulio-profiles'](https://forge.puppetlabs.com/mtulio/linux)
 
 #### Files
 
@@ -46,64 +45,43 @@ In this class you can be specific and detailed in what the business need.
 
 #### Usage
 
-* Basic security level
+* Basic usage
 ```
-include ::profiles
-class {'::profiles::linux':
-  security_level => 'basic',
+class {'::roles::server_linux' : }
+```
+
+* Using your own 'module repository of configuration'
+```
+class {'::roles::server_linux' : 
+  config_repo => '0_REPOSITORY',
 }
 ```
 
-* Define your own repository of configuration [module]
-```
-class {'::profiles' :
-  gb_repo_base => '0_REPOSITORY',
-  gb_pool      => 'dmz',
-}
-class {'::profiles::linux' :
-  security_level => 'basic',
-}
-```
+### 2.2 Class: pool_dmz_nginx
 
-### NMS
+#### Description
 
-#### Zabbix Agent
+ Profile to configure NGINX in a Linux server [in development]
 
-##### Description
+#### Dependencies
+#### Files
+#### Usage
 
- Profile to configure zabbix Agent on a Linux server
 
-##### Dependencies
-
- Module ['Zabbix'](https://forge.puppetlabs.com/mtulio/zabbix)
-
-##### Files
-
-See [module description](https://forge.puppetlabs.com/mtulio/zabbix)
-
-##### Usage
-
-* Configure Zabbix Agent with the basic parameters defined on class '::profiles::nms::zabbix_agent'. (check out the class to customize the parameters of your organization)
-
-```
- include profiles
- class { 'profiles::nms::zabbix_agent' : }
-```
-
-## Limitations
+## 3. Limitations
 
 OS compatibility: 
 * Red Hat family 7+ 
 
 We're working to support more OS.
 
-## Development
+## 4. Development
 
-See project page at https://github.com/mtulio/puppet-mod-profiles
+See project page at https://github.com/mtulio/puppet-mod-roles
 
-## Release Notes
+## 5. Release Notes
 
 [1.0.0]
-* Add Profile Linux [base and sshd configuration]
-* Add Profile Zabbix 
+* Add Role for Linux server [server_linux]
+* In development role/profile for NGINX web server
 
