@@ -3,6 +3,7 @@
 [![Puppet Forge](http://img.shields.io/puppetforge/v/mtulio/roles.svg)](https://forge.puppetlabs.com/mtulio/roles)
 [![Build Status](https://travis-ci.org/mtulio/puppet-mod-roles.png?branch=master)](https://travis-ci.org/mtulio/puppet-mod-roles
 
+
 #### Table of Contents
 
 1. [Overview](#1-overview)
